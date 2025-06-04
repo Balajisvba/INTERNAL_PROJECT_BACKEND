@@ -1,9 +1,12 @@
 package com.tvm.internal.tvm_internal_project.model;
 
+import com.tvm.internal.tvm_internal_project.model.onboarding.Personal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Employee {
@@ -13,6 +16,15 @@ public class Employee {
     private String employeeName; // Required
     private String role; // Optional
     private String status; // Optional
+    private Long mobile;
+    private String email;
+    private String aadhar;
+    private String dob;
+    private String gender;
+    private String password;
+    @OneToOne
+    @JoinColumn(name = "personal_id")
+    private Personal personal;
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -44,5 +56,61 @@ public class Employee {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAadhar() {
+        return aadhar;
+    }
+
+    public void setAadhar(String aadhar) {
+        this.aadhar = aadhar;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
     }
 }
