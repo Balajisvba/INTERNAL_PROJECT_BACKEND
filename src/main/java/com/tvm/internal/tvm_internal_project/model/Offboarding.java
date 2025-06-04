@@ -1,0 +1,155 @@
+package com.tvm.internal.tvm_internal_project.model;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+public class Offboarding {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long employeeId;
+    private LocalDate noticePeriodStartDate;
+    private LocalDate noticePeriodEndDate;
+    private LocalDate relievingDate;
+
+    @Enumerated(EnumType.STRING)
+    private ExitReason exitReason;
+
+    @Enumerated(EnumType.STRING)
+    private ExitType exitType;
+
+    @Enumerated(EnumType.STRING)
+    private ExitStatus exitStatus;
+    private String exitInterviewFeedback;
+    private String exitInterviewer;
+    private Boolean offboardingDocumentsSubmitted;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private String createdBy;
+    private String updatedBy;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public LocalDate getNoticePeriodStartDate() {
+        return noticePeriodStartDate;
+    }
+
+    public void setNoticePeriodStartDate(LocalDate noticePeriodStartDate) {
+        this.noticePeriodStartDate = noticePeriodStartDate;
+    }
+
+    public LocalDate getNoticePeriodEndDate() {
+        return noticePeriodEndDate;
+    }
+
+    public void setNoticePeriodEndDate(LocalDate noticePeriodEndDate) {
+        this.noticePeriodEndDate = noticePeriodEndDate;
+    }
+
+    public LocalDate getRelievingDate() {
+        return relievingDate;
+    }
+
+    public void setRelievingDate(LocalDate relievingDate) {
+        this.relievingDate = relievingDate;
+    }
+
+    public ExitReason getExitReason() {
+        return exitReason;
+    }
+
+    public void setExitReason(ExitReason exitReason) {
+        this.exitReason = exitReason;
+    }
+
+    public ExitType getExitType() {
+        return exitType;
+    }
+
+    public void setExitType(ExitType exitType) {
+        this.exitType = exitType;
+    }
+
+    public ExitStatus getExitStatus() {
+        return exitStatus;
+    }
+
+    public void setExitStatus(ExitStatus exitStatus) {
+        this.exitStatus = exitStatus;
+    }
+
+    public String getExitInterviewFeedback() {
+        return exitInterviewFeedback;
+    }
+
+    public void setExitInterviewFeedback(String exitInterviewFeedback) {
+        this.exitInterviewFeedback = exitInterviewFeedback;
+    }
+
+    public String getExitInterviewer() {
+        return exitInterviewer;
+    }
+
+    public void setExitInterviewer(String exitInterviewer) {
+        this.exitInterviewer = exitInterviewer;
+    }
+
+    public Boolean getOffboardingDocumentsSubmitted() {
+        return offboardingDocumentsSubmitted;
+    }
+
+    public void setOffboardingDocumentsSubmitted(Boolean offboardingDocumentsSubmitted) {
+        this.offboardingDocumentsSubmitted = offboardingDocumentsSubmitted;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+}
+
