@@ -23,25 +23,13 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findAll();
     }
 
-
     public Task getTaskById(Long id) {
         return taskRepository.findById(id).orElse(null);
     }
 
-//    private Long id;
-//    private String taskName;
-//    private String taskOwner;
-//    private String description;
-//    private String priority;
-//    private LocalDate assignedDate;
-//    private LocalDate dueDate;
-//    private String status;
-//    private Date reminder;
-
     public Task updateTask(Long id, Task taskDetails) {
 
         Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
-
 
         task.setTaskName(taskDetails.getTaskName());
         task.setTaskOwner(taskDetails.getTaskOwner());
@@ -55,13 +43,8 @@ public class TaskServiceImpl implements TaskService {
 
     }
 
-
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
 
-
-//    public List<Task> getTasksByEmployee(int empId) {
-//        return taskRepository.findByEmployeeId(empId);
-//    }
 }
