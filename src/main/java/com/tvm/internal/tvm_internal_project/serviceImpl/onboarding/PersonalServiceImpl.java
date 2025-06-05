@@ -1,17 +1,20 @@
 package com.tvm.internal.tvm_internal_project.serviceImpl.onboarding;
 
 import com.tvm.internal.tvm_internal_project.exception.PersonalNotFoundException;
-import com.tvm.internal.tvm_internal_project.model.Employee;
 import com.tvm.internal.tvm_internal_project.model.onboarding.Personal;
 import com.tvm.internal.tvm_internal_project.repo.EmployeeRepo;
 import com.tvm.internal.tvm_internal_project.repo.onboarding.PersonalRepository;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import com.tvm.internal.tvm_internal_project.response.WishesDto;
 import com.tvm.internal.tvm_internal_project.service.onboarding.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -167,38 +170,25 @@ public class PersonalServiceImpl implements PersonalService {
         return new ResponseEntity<>(structure, HttpStatus.OK);
     }
 
-    @Override
-    public ResponseEntity<ResponseStructure<List<Personal>>> findSuccessEmployees() {
-        return null;
+    @Scheduled(cron = "0 0 0 * * *")
+    public List<WishesDto> wishesService() {
+        System.out.println("Birthday Wishes is running........");
+        List<Personal> personals = personalRepository.findAll();
+        LocalDate today = LocalDate.now();
+
+        List<WishesDto> wishesList = new ArrayList<>();
+
+        for (Personal personal : personals) {
+            LocalDate dob = LocalDate.parse(personal.getDob()); // ensure dob is LocalDate
+            if (dob != null && dob.getDayOfMonth() == today.getDayOfMonth() && dob.getMonth() == today.getMonth()) {
+
+                WishesDto dto = new WishesDto();
+                dto.setName(personal.getFname());
+                dto.setDob(String.valueOf(dob));
+
+                wishesList.add(dto);
+            }
+        }
+        return wishesList;
     }
-
-    @Override
-    public ResponseEntity<ResponseStructure<List<Employee>>> findFailedEmployees() {
-        return null;
-    }
-
-//Required for Employee status
-//    public ResponseEntity<ResponseStructure<List<Personal>>> findSuccessEmployees() {
-//        ResponseStructure<List<Personal>> structure = new ResponseStructure<>();
-//        List<Employee> employee = employeeRepo.findBySuccessStatus(1);
-//        if (employee.isEmpty()) {
-//            throw new EmployeeNotFoundException("Onboarded Employees Not Found");
-//        }
-//        structure.setMessage("OnBoarded Employees Found");
-//        structure.setBody(personalRepository.findAll());
-//        structure.setStatusCode(HttpStatus.OK.value());
-//        return new ResponseEntity<>(structure, HttpStatus.OK);
-//    }
-//    public ResponseEntity<ResponseStructure<List<Employee>>> findFailedEmployees() {
-//        ResponseStructure<List<Employee>> structure = new ResponseStructure<>();
-//        List<Employee> employee = employeeRepo.findByFailedStatus(0);
-//        if (employee.isEmpty()) {
-//            throw new EmployeeNotFoundException("No one is Pending");
-//        }
-//        structure.setMessage("Onboarded Pending People");
-//        structure.setBody(employee);
-//        structure.setStatusCode(HttpStatus.OK.value());
-//        return new ResponseEntity<>(structure, HttpStatus.OK);
-//    }
-
 }

@@ -1,8 +1,8 @@
 package com.tvm.internal.tvm_internal_project.controller.onboarding;
 
-import com.tvm.internal.tvm_internal_project.model.Employee;
 import com.tvm.internal.tvm_internal_project.model.onboarding.Personal;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import com.tvm.internal.tvm_internal_project.response.WishesDto;
 import com.tvm.internal.tvm_internal_project.service.onboarding.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +22,6 @@ public class PersonalController {
         return personalService.savePersonalInfo(personal);
     }
 
-    @GetMapping("/onboardedEmp")
-    public ResponseEntity<ResponseStructure<List<Personal>>> getsuccessEmployees() {
-        return personalService.findSuccessEmployees();
-    }
-
-    @GetMapping("/pendingEmp")
-    public ResponseEntity<ResponseStructure<List<Employee>>> getFailedEmployees() {
-        return personalService.findFailedEmployees();
-    }
 
     @GetMapping("/searchByName/{name}")
     public ResponseEntity<ResponseStructure<List<Personal>>> serachDetailsByName(@PathVariable String name) {
@@ -67,4 +58,8 @@ public class PersonalController {
         return personalService.findAllPersonal();
     }
 
+    @GetMapping("/wishes")
+    public List<WishesDto> wishes() {
+        return personalService.wishesService();
+    }
 }

@@ -1,8 +1,8 @@
 package com.tvm.internal.tvm_internal_project.service.onboarding;
 
-import com.tvm.internal.tvm_internal_project.model.Employee;
 import com.tvm.internal.tvm_internal_project.model.onboarding.Personal;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import com.tvm.internal.tvm_internal_project.response.WishesDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -24,8 +24,5 @@ public interface PersonalService {
 
     ResponseEntity<ResponseStructure<String>> deleteById(Integer id);
 
-    ResponseEntity<ResponseStructure<List<Personal>>> findSuccessEmployees();
-
-    ResponseEntity<ResponseStructure<List<Employee>>> findFailedEmployees();
-
+    List<WishesDto> wishesService();
 }
