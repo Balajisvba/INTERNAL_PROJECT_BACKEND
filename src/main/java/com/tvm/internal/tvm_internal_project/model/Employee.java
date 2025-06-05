@@ -1,5 +1,6 @@
 package com.tvm.internal.tvm_internal_project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tvm.internal.tvm_internal_project.model.onboarding.Personal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +23,7 @@ public class Employee {
     private String dob;
     private String gender;
     private String password;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "personal_id")
     private Personal personal;

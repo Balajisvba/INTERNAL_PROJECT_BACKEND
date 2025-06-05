@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface PersonalService {
-    ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(Personal personal, Integer employeeId);
+    ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(Personal personal);
 
     ResponseEntity<ResponseStructure<List<Personal>>> findAllDetailsUsingName(String name);
 

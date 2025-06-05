@@ -23,18 +23,15 @@ public class PersonalServiceImpl implements PersonalService {
     @Autowired
     private EmployeeRepo employeeRepo;
 
-    public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(Personal personal, Integer employeeId) {
-        Employee employee = employeeRepo.findById(employeeId).orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeId));
-        employee.setStatus("1");
-        personal.setEmployee(employee);
-        personalRepository.save(personal);
+    public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(Personal personal) {
+        Personal savedPersonal = personalRepository.save(personal);
         ResponseStructure<Personal> structure = new ResponseStructure<>();
         structure.setMessage("Personal info saved successfully");
-        structure.setBody(personal);
+        structure.setBody(savedPersonal); // ← now includes the generated ID
         structure.setStatusCode(HttpStatus.CREATED.value());
+
         return new ResponseEntity<>(structure, HttpStatus.CREATED);
     }
-
 
     public ResponseEntity<ResponseStructure<List<Personal>>> findAllDetailsUsingName(String name) {
         ResponseStructure<List<Personal>> structure = new ResponseStructure<>();

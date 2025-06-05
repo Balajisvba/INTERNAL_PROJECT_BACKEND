@@ -17,9 +17,9 @@ public class PersonalController {
     @Autowired
     private PersonalService personalService;
 
-    @PostMapping("{id}")
-    public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(@RequestBody Personal personal, @PathVariable int id) {
-        return personalService.savePersonalInfo(personal, id);
+    @PostMapping
+    public ResponseEntity<ResponseStructure<Personal>> savePersonalInfo(@RequestBody Personal personal) {
+        return personalService.savePersonalInfo(personal);
     }
 
     @GetMapping("/onboardedEmp")
