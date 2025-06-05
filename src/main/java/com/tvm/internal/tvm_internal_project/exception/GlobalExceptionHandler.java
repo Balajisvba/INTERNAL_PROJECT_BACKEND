@@ -2,12 +2,14 @@ package com.tvm.internal.tvm_internal_project.exception;
 
 
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
+@Hidden
 public class GlobalExceptionHandler {
     @ExceptionHandler(CertificationNotFoundException.class)
     public ResponseEntity<ResponseStructure<String>> handleUNFE(CertificationNotFoundException exception) {
