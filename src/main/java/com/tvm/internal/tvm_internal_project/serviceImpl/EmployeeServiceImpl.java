@@ -20,25 +20,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 //    To send the email to user while saving the user
 
-//    public ResponseEntity<ResponseStructure<Employee>> addUser(Employee employee) {
-//        ResponseStructure<Employee> structure = new ResponseStructure<>();
-
-    /// /        emailService.sendRegistrationEmail("chandrus2805@gmail.com", "deepak");
-//        Employee savedEmployee = employeeRepo.save(employee);
-//        if (savedEmployee != null && savedEmployee.getId() != null) {
-    @Override
     public ResponseEntity<ResponseStructure<Employee>> addUser(Employee employee) {
-        return null;
-    }
+        ResponseStructure<Employee> structure = new ResponseStructure<>();
 
-    /// /            emailService.sendRegistrationEmail(savedEmployee.getEmail(), savedEmployee.getFullName());
-//        }
-//        structure.setMessage("User Registered Successfully!!");
-//        structure.setBody(savedEmployee);
-//        structure.setStatusCode(HttpStatus.CREATED.value());
-//
-//        return new ResponseEntity<>(structure, HttpStatus.CREATED);
-//    }
+        structure.setMessage("User Registered Successfully!!");
+        structure.setBody(employeeRepo.save(employee));
+        structure.setStatusCode(HttpStatus.CREATED.value());
+
+        return new ResponseEntity<>(structure, HttpStatus.CREATED);
+    }
 
     public ResponseEntity<ResponseStructure<Employee>> loginByEmail(String email, String password) {
         Employee user = employeeRepo.findByEmailAndPassword(email, password)
