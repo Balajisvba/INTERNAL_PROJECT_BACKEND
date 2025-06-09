@@ -65,6 +65,11 @@ public class OffboardingServiceImpl implements OffboardingService {
 
     private void updateEntityFromDto(Offboarding e, OffboardingRequestDTO dto) {
         e.setEmployeeId(dto.getEmployeeId());
+        e.setName(dto.getName());
+        e.setReason(dto.getReason());
+        e.setExplanation(dto.getExplanation());
+        e.setDate(dto.getDate());
+        e.setStatus(dto.getStatus());
         e.setNoticePeriodStartDate(dto.getNoticePeriodStartDate());
         e.setNoticePeriodEndDate(dto.getNoticePeriodEndDate());
         e.setRelievingDate(dto.getRelievingDate());

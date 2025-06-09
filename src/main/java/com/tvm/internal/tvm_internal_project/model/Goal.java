@@ -9,20 +9,15 @@ public class Goal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GOAL_ID")
     private Long goalId;
-    @Column(name = "NAME", nullable = false)
-    private String name;
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
-    @Column(name = "PRIORITY", nullable = false)
     private String priority;
-    @Column(name = "START_DATE", nullable = false)
+    private String category;
+    private String description;
     private LocalDate startDate;
-    @Column(name = "END_POINT", nullable = false)
     private LocalDate endDate;
-    @Column(name = "PROGRESS", nullable = false)
-    private Integer progress;
+    private String metrics;
+    private String outcome;
+    private int weight;
 
     public Long getGoalId() {
         return goalId;
@@ -32,12 +27,20 @@ public class Goal {
         this.goalId = goalId;
     }
 
-    public String getName() {
-        return name;
+    public String getPriority() {
+        return priority;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDescription() {
@@ -46,14 +49,6 @@ public class Goal {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
     }
 
     public LocalDate getStartDate() {
@@ -72,11 +67,27 @@ public class Goal {
         this.endDate = endDate;
     }
 
-    public Integer getProgress() {
-        return progress;
+    public String getMetrics() {
+        return metrics;
     }
 
-    public void setProgress(Integer progress) {
-        this.progress = progress;
+    public void setMetrics(String metrics) {
+        this.metrics = metrics;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(String outcome) {
+        this.outcome = outcome;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }

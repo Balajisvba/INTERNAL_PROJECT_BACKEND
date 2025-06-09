@@ -37,8 +37,11 @@ public class HiringServiceImpl implements HiringService {
         JobOpening existing = jobRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Job not found"));
         existing.setTitle(job.getTitle());
-        existing.setDepartment(job.getDepartment());
+        existing.setQualifications(job.getQualifications());
+        existing.setYearOfPassout(job.getYearOfPassout());
+        existing.setExperience(job.getExperience());
         existing.setDescription(job.getDescription());
+        existing.setSkills(job.getSkills());
         existing.setLocation(job.getLocation());
         existing.setStatus(job.getStatus());
         return jobRepo.save(existing);
