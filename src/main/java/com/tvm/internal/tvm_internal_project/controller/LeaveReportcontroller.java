@@ -18,12 +18,6 @@ public class LeaveReportcontroller {
     @Autowired
     private LeaveReportservice leaveReportService;
 
-    @PostMapping
-    public ResponseEntity<LeaveReport> createLeaveReport(@RequestBody LeaveReport leaveReport) {
-        LeaveReport createdLeaveReport = leaveReportService.saveLeaveReport(leaveReport);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdLeaveReport);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<LeaveReport> getLeaveReportById(@PathVariable Long id) {
         return leaveReportService.findLeaveReportById(id)
@@ -31,19 +25,16 @@ public class LeaveReportcontroller {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/leave")
+    @PostMapping(value = "/leaves", consumes = "multipart/form-data")
     public ResponseEntity<LeaveReport> createLeaveReport(
-            @RequestParam(value = "file") MultipartFile image,
-            @RequestParam(value = "leaveReport") String leaveReportJson) {
+            @RequestParam(value = "file", required = false) MultipartFile image,
+            @RequestParam("leaveReport") String leaveReportJson) {
         try {
-            // Convert JSON string to LeaveReport object
             ObjectMapper objectMapper = new ObjectMapper();
             LeaveReport leaveReport = objectMapper.readValue(leaveReportJson, LeaveReport.class);
 
-            // Process image
             if (image != null && !image.isEmpty()) {
-                byte[] imageBytes = image.getBytes();
-                leaveReport.setProfilePicture(imageBytes);
+                leaveReport.setProfilePicture(image.getBytes());
             }
 
             LeaveReport createdLeaveReport = leaveReportService.saveLeaveReport(leaveReport);
