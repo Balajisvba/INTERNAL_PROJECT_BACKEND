@@ -1,19 +1,21 @@
 package com.tvm.internal.tvm_internal_project.service;
 
 import com.tvm.internal.tvm_internal_project.model.Task;
+import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface TaskService {
-    Task createTask(Task task);
+    ResponseEntity<ResponseStructure<Task>> createTask(Task task);
 
-    List<Task> getAllTasks();
+    ResponseEntity<ResponseStructure<List<Task>>> getAllTasks();
 
-    Task getTaskById(Long id);
+    ResponseEntity<ResponseStructure<Task>> getTaskById(Long id);
 
-    Task updateTask(Long id, Task taskDetails);
+    ResponseEntity<ResponseStructure<Task>> updateTask(Long id, Task taskDetails);
 
-    void deleteTask(Long id);
+    ResponseEntity<ResponseStructure<String>> deleteTask(Long id);
 
 }
 

@@ -15,6 +15,18 @@ public class Documents {
     @JsonBackReference
     private Personal personal;
 
+    @OneToOne
+    @JoinColumn(name = "BankDetailsDocument_id")
+    private BankDetailsDocument bankDetailsDocument;
+
+    @OneToOne
+    @JoinColumn(name = "KYCDocument_id")
+    private KYCDocument kycDocument;
+
+    @OneToOne
+    @JoinColumn(name = "EducationDocument_id")
+    private EducationDocument educationDocument;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +41,29 @@ public class Documents {
 
     public void setPersonal(Personal personal) {
         this.personal = personal;
+    }
+
+    public BankDetailsDocument getBankDetailsDocument() {
+        return bankDetailsDocument;
+    }
+
+    public void setBankDetailsDocument(BankDetailsDocument bankDetailsDocument) {
+        this.bankDetailsDocument = bankDetailsDocument;
+    }
+
+    public KYCDocument getKycDocument() {
+        return kycDocument;
+    }
+
+    public void setKycDocument(KYCDocument kycDocument) {
+        this.kycDocument = kycDocument;
+    }
+
+    public EducationDocument getEducationDocument() {
+        return educationDocument;
+    }
+
+    public void setEducationDocument(EducationDocument educationDocument) {
+        this.educationDocument = educationDocument;
     }
 }
