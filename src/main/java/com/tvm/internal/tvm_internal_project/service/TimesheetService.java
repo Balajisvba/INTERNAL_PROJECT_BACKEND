@@ -1,21 +1,23 @@
 package com.tvm.internal.tvm_internal_project.service;
 
 import com.tvm.internal.tvm_internal_project.model.Timesheet;
+import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface TimesheetService {
 
 
-    List<Timesheet> getAllTimesheets();
+    ResponseEntity<ResponseStructure<List<Timesheet>>> getAllTimesheets();
 
-    Timesheet getTimesheetById(Long id);
+    ResponseEntity<ResponseStructure<Timesheet>> getTimesheetById(Long id);
 
-    String createTimesheet(Timesheet timesheet);
+    ResponseEntity<ResponseStructure<Timesheet>> createTimesheet(Timesheet timesheet);
 
-    Timesheet updateTimesheet(Long id, Timesheet timesheetDetails);
+    ResponseEntity<ResponseStructure<Timesheet>> updateTimesheet(Long id, Timesheet timesheetDetails);
 
-    void deleteTimesheet(Long id);
+    ResponseEntity<ResponseStructure<String>> deleteTimesheet(Long id);
 
 }
 

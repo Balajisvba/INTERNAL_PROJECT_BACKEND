@@ -38,6 +38,24 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(NoTaskFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(NoTaskFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("ID Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TimeSheetNotFoundException.class)
+    public ResponseEntity<ResponseStructure<String>> handle(TimeSheetNotFoundException exception) {
+        ResponseStructure<String> structure = new ResponseStructure<>();
+        structure.setBody("ID Not Found");
+        structure.setMessage(exception.getMessage());
+        structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(FamilyNotFoundException.class)
     public ResponseEntity<ResponseStructure<String>> handle(FamilyNotFoundException exception) {
         ResponseStructure<String> structure = new ResponseStructure<>();

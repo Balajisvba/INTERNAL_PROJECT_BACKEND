@@ -1,8 +1,11 @@
 package com.tvm.internal.tvm_internal_project.controller;
 
 import com.tvm.internal.tvm_internal_project.model.Timesheet;
+import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
 import com.tvm.internal.tvm_internal_project.service.TimesheetService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,29 +19,28 @@ public class TimesheetController {
     private TimesheetService timesheetService;
 
     @GetMapping("/timesheets/{id}")
-    public Timesheet getTimesheetById(@PathVariable Long id) {
+    public ResponseEntity<ResponseStructure<Timesheet>> getTimesheetById(@PathVariable Long id) {
         return timesheetService.getTimesheetById(id);
     }
 
     @GetMapping("/timesheets")
-    public List<Timesheet> getAllTimesheet() {
+    public ResponseEntity<ResponseStructure<List<Timesheet>>> getAllTimesheet() {
         return timesheetService.getAllTimesheets();
     }
 
     @PostMapping("/timesheets")
-    public String createTimesheet(@RequestBody Timesheet timesheet) {
-        System.out.println("Received Timesheet: " + timesheet);
+    public ResponseEntity<ResponseStructure<Timesheet>> createTimesheet(@RequestBody Timesheet timesheet) {
         return timesheetService.createTimesheet(timesheet);
     }
 
     @PutMapping("/timesheets/{id}")
-    public Timesheet updateTimesheet(@PathVariable Long id, @RequestBody Timesheet timesheet) {
+    public ResponseEntity<ResponseStructure<Timesheet>> updateTimesheet(@PathVariable Long id, @RequestBody Timesheet timesheet) {
         return timesheetService.updateTimesheet(id, timesheet);
     }
 
     @DeleteMapping("/timesheets/{id}")
-    public void deleteTimesheet(@PathVariable Long id) {
-        timesheetService.deleteTimesheet(id);
+    public ResponseEntity<ResponseStructure<String>> deleteTimesheet(@PathVariable Long id) {
+        return timesheetService.deleteTimesheet(id);
     }
 }
 
