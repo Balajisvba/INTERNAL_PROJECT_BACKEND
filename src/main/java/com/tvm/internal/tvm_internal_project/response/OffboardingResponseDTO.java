@@ -8,7 +8,12 @@ import java.time.LocalDateTime;
 @Data
 public class OffboardingResponseDTO {
     private Long id;
+    private String name;
     private Long employeeId;
+    private String reason;
+    private String explanation;
+    private String date;
+    private String status;
     private LocalDate noticePeriodStartDate;
     private LocalDate noticePeriodEndDate;
     private LocalDate relievingDate;

@@ -12,9 +12,12 @@ public class JobOpening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String department;
-    private String description;
+    private String qualifications;
+    private String yearOfPassout;
     private String location;
+    private String experience;
+    private String skills;
+    private String description;
     private String status; // OPEN, CLOSED
 
     public Long getId() {
@@ -33,20 +36,20 @@ public class JobOpening {
         this.title = title;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getQualifications() {
+        return qualifications;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
     }
 
-    public String getDescription() {
-        return description;
+    public String getYearOfPassout() {
+        return yearOfPassout;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setYearOfPassout(String yearOfPassout) {
+        this.yearOfPassout = yearOfPassout;
     }
 
     public String getLocation() {
@@ -55,6 +58,30 @@ public class JobOpening {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {

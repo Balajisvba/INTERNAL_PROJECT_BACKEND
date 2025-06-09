@@ -6,7 +6,12 @@ import java.time.LocalDate;
 
 @Data
 public class OffboardingRequestDTO {
+    private String name;
     private Long employeeId;
+    private String reason;
+    private String explanation;
+    private String date;
+    private String status;
     private LocalDate noticePeriodStartDate;
     private LocalDate noticePeriodEndDate;
     private LocalDate relievingDate;

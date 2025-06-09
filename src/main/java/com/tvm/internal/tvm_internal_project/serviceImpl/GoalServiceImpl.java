@@ -31,12 +31,14 @@ public class GoalServiceImpl implements GoalSevice {
         Optional<Goal> existingGoal = goalRepo.findById(id);
         if (existingGoal.isPresent()) {
             Goal goal = existingGoal.get();
-            goal.setName(updatedGoal.getName());
+            goal.setCategory(updatedGoal.getCategory());
             goal.setDescription(updatedGoal.getDescription());
             goal.setPriority(updatedGoal.getPriority());
             goal.setStartDate(updatedGoal.getStartDate());
             goal.setEndDate(updatedGoal.getEndDate());
-            goal.setProgress(updatedGoal.getProgress());
+            goal.setMetrics(updatedGoal.getMetrics());
+            goal.setOutcome(updatedGoal.getOutcome());
+            goal.setWeight(updatedGoal.getWeight());
             return goalRepo.save(goal);
         } else {
             throw new RuntimeException("Goal not found with id: " + id);
