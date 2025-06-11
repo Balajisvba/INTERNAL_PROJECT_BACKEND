@@ -56,7 +56,6 @@ public class KYCServiceImpl implements KYCService {
             existingKYC.setHdfc(kyc.getHdfc());
             existingKYC.setPanName(kyc.getPanName());
             existingKYC.setUan(kyc.getUan());
-            existingKYC.setPersonal(kyc.getPersonal());
 
             KYC updatedKyc = kycRepository.save(existingKYC);
             response.setBody(updatedKyc);

@@ -68,7 +68,6 @@ public class PassportServiceImpl implements PassportService {
             existingPassport.setIfPassport(passport.getIfPassport());
             existingPassport.setPassportNumber(passport.getPassportNumber());
             existingPassport.setNationality(passport.getNationality());
-            existingPassport.setPersonal(passport.getPersonal());
             Passport passport1 = passportRepository.save(existingPassport);
             structure.setMessage("Passport successfully updated with ID " + id);
             structure.setBody(passport1);

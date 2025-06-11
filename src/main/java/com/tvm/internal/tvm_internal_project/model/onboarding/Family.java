@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Family {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String fatherName;
     private String fatherDOB;
     private String motherName;
@@ -23,11 +23,11 @@ public class Family {
     @JsonBackReference
     private Personal personal;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
