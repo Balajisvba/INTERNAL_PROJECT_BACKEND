@@ -62,6 +62,8 @@ public class TimesheetServiceImpl implements TimesheetService {
         timesheet.setProjectId(timesheetDetails.getProjectId());
         timesheet.setDate(timesheetDetails.getDate());
         timesheet.setHoursworked(timesheetDetails.getHoursworked());
+        timesheet.setLocation(timesheetDetails.getLocation());
+        timesheet.setTask(timesheetDetails.getTask());
         ResponseStructure<Timesheet> timesheetDto = new ResponseStructure<>();
         timesheetDto.setBody(timesheetRepository.save(timesheet));
         timesheetDto.setMessage("Timesheet is Updated Successfully");
