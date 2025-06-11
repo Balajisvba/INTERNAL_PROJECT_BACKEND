@@ -1,5 +1,7 @@
 package com.tvm.internal.tvm_internal_project.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,8 @@ public class Timesheet {
     private String Location;
     private String Task;
     private LocalDate date;
+    @Schema(type = "string", format = "time", example = "08:30:00")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime hoursworked;
     private String description;
 

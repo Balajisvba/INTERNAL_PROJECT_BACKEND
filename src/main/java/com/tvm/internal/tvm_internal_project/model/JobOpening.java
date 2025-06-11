@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.util.List;
+
 @Entity
 public class JobOpening {
 
@@ -12,13 +14,29 @@ public class JobOpening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String qualifications;
+    private List<String> qualifications;
     private String yearOfPassout;
     private String location;
     private String experience;
-    private String skills;
+    private List<String> skills;
     private String description;
     private String status; // OPEN, CLOSED
+
+    public List<String> getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(List<String> qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    public List<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
+    }
 
     public Long getId() {
         return id;
@@ -36,13 +54,6 @@ public class JobOpening {
         this.title = title;
     }
 
-    public String getQualifications() {
-        return qualifications;
-    }
-
-    public void setQualifications(String qualifications) {
-        this.qualifications = qualifications;
-    }
 
     public String getYearOfPassout() {
         return yearOfPassout;
@@ -66,14 +77,6 @@ public class JobOpening {
 
     public void setExperience(String experience) {
         this.experience = experience;
-    }
-
-    public String getSkills() {
-        return skills;
-    }
-
-    public void setSkills(String skills) {
-        this.skills = skills;
     }
 
     public String getDescription() {
