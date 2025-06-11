@@ -28,7 +28,7 @@ public class FamilyServiceImpl implements FamilyService {
         return new ResponseEntity<>(familyDTO, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<ResponseStructure<Family>> getbyid(Integer id) {
+    public ResponseEntity<ResponseStructure<Family>> getbyid(Long id) {
         Optional<Family> optional = familyRepository.findById(id);
         if (optional.isEmpty()) {
             throw new FamilyNotFoundException("Family ID is Not Found!!");
@@ -49,7 +49,7 @@ public class FamilyServiceImpl implements FamilyService {
         return new ResponseEntity<>(familyDto, HttpStatus.OK);
     }
 
-    public ResponseEntity<ResponseStructure<Family>> updateall(Integer id, Family family) {
+    public ResponseEntity<ResponseStructure<Family>> updateall(Long id, Family family) {
         Optional<Family> optional = familyRepository.findById(id);
         if (optional.isEmpty()) {
             throw new FamilyNotFoundException("Family ID is Not Found!!!");
@@ -70,7 +70,7 @@ public class FamilyServiceImpl implements FamilyService {
         return new ResponseEntity<>(familyDTO, HttpStatus.OK);
     }
 
-    public ResponseEntity<ResponseStructure<String>> deletebyid(Integer id) {
+    public ResponseEntity<ResponseStructure<String>> deletebyid(Long id) {
         Optional<Family> optional = familyRepository.findById(id);
         if (optional.isEmpty()) {
             throw new FamilyNotFoundException("Family ID is Not Found!!!");

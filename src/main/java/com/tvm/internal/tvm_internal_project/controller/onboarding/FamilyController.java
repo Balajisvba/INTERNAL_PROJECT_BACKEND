@@ -22,7 +22,7 @@ public class FamilyController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseStructure<Family>> getbyid(@PathVariable Integer id) {
+    public ResponseEntity<ResponseStructure<Family>> getbyid(@PathVariable Long id) {
         return familyService.getbyid(id);
     }
 
@@ -32,12 +32,12 @@ public class FamilyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseStructure<Family>> update(@PathVariable Integer id, @RequestBody Family family) {
+    public ResponseEntity<ResponseStructure<Family>> update(@PathVariable Long id, @RequestBody Family family) {
         return familyService.updateall(id, family);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ResponseStructure<String>> deletebyid(@PathVariable Integer id) {
+    public ResponseEntity<ResponseStructure<String>> deletebyid(@PathVariable Long id) {
         return familyService.deletebyid(id);
     }
 }
