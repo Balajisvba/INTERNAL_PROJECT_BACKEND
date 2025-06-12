@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserDetailController {
 
 
@@ -19,13 +20,13 @@ public class UserDetailController {
         return userDetailService.createUser(user);
     }
 
-    @GetMapping("/byemail")
-    public boolean checkUserByEmail(@RequestParam String email, @RequestParam String password) {
-        return userDetailService.checkUserByEmail(email, password);
+    @PostMapping("/byemail")
+    public boolean checkUserByEmail(@RequestBody UserDetail userDetail) {
+        return userDetailService.checkUserByEmail(userDetail.getEmail(), userDetail.getPassword());
     }
 
-    @GetMapping("/bymob")
-    public boolean checkUserByMobile(@RequestParam Long mobile, @RequestParam String password) {
-        return userDetailService.checkUserByMobile(mobile, password);
+    @PostMapping("/bymob")
+    public boolean checkUserByMobile(@RequestBody UserDetail userDetail) {
+        return userDetailService.checkUserByMobile(userDetail.getMobile(), userDetail.getPassword());
     }
 }
