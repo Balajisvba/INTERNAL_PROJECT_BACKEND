@@ -1,7 +1,10 @@
 package com.tvm.internal.tvm_internal_project.serviceImpl;
 
 import com.tvm.internal.tvm_internal_project.exception.TimeSheetNotFoundException;
+import com.tvm.internal.tvm_internal_project.model.ChartData;
+import com.tvm.internal.tvm_internal_project.model.Hours;
 import com.tvm.internal.tvm_internal_project.model.Timesheet;
+import com.tvm.internal.tvm_internal_project.model.WorkMode;
 import com.tvm.internal.tvm_internal_project.repo.TimesheetRepository;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
 import com.tvm.internal.tvm_internal_project.service.TimesheetService;
@@ -12,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.ArrayList;
 
 @Service
 public class TimesheetServiceImpl implements TimesheetService {
@@ -57,18 +63,48 @@ public class TimesheetServiceImpl implements TimesheetService {
             throw new TimeSheetNotFoundException("Timesheet Id is Not Found");
         }
         Timesheet timesheet = optional.get();
-        timesheet.setEmpId(timesheetDetails.getEmpId());
         timesheet.setDescription(timesheetDetails.getDescription());
-        timesheet.setProjectId(timesheetDetails.getProjectId());
-        timesheet.setDate(timesheetDetails.getDate());
-        timesheet.setHoursworked(timesheetDetails.getHoursworked());
-        timesheet.setLocation(timesheetDetails.getLocation());
-        timesheet.setTask(timesheetDetails.getTask());
+        timesheet.setProject(timesheetDetails.getProject());
+        timesheet.setWeekendDate(timesheetDetails.getWeekendDate());
+        timesheet.setWfol(timesheetDetails.isWfol());
+        timesheet.setHours(timesheetDetails.getHours());
         ResponseStructure<Timesheet> timesheetDto = new ResponseStructure<>();
         timesheetDto.setBody(timesheetRepository.save(timesheet));
         timesheetDto.setMessage("Timesheet is Updated Successfully");
         timesheetDto.setStatusCode(HttpStatus.OK.value());
         return new ResponseEntity<>(timesheetDto, HttpStatus.OK);
+    }
+
+    public ResponseEntity<ChartData> getWorkHours(Long id) {
+        Timesheet timesheet = timesheetRepository.findById(id).orElseThrow(() -> new TimeSheetNotFoundException("Workhours Not Found for ID: " + id));
+        Hours hours = timesheet.getHours();
+        List<WorkMode> weekModes = List.of(hours.getMonday(), hours.getTuesday(), hours.getWednesday(), hours.getThursday(), hours.getFriday());
+        Map<String, Integer> pieCountMap = new LinkedHashMap<>();
+        for (WorkMode mode : WorkMode.values()) {
+            pieCountMap.put(mode.toLabel(), 0);
+        }
+        for (WorkMode mode : weekModes) {
+            String label = mode.toLabel();
+            pieCountMap.put(label, pieCountMap.get(label) + 1);
+        }
+        Map<String, Object> pieData = new LinkedHashMap<>();
+        pieData.put("labels", new ArrayList<>(pieCountMap.keySet()));
+        pieData.put("values", new ArrayList<>(pieCountMap.values()));
+
+        List<String> barLabels = new ArrayList<>();
+        List<Integer> barValues = new ArrayList<>();
+
+        for (WorkMode mode : weekModes) {
+            barLabels.add(mode.toLabel());
+            barValues.add(mode.toWorkingHours());
+        }
+        Map<String, Object> barData = new LinkedHashMap<>();
+        barData.put("labels", barLabels);
+        barData.put("values", barValues);
+        ChartData chartData = new ChartData();
+        chartData.setPieData(pieData);
+        chartData.setBarData(barData);
+        return ResponseEntity.ok(chartData);
     }
 
     public ResponseEntity<ResponseStructure<String>> deleteTimesheet(Long id) {

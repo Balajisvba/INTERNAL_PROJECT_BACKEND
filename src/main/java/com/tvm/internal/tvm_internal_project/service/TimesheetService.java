@@ -1,5 +1,6 @@
 package com.tvm.internal.tvm_internal_project.service;
 
+import com.tvm.internal.tvm_internal_project.model.ChartData;
 import com.tvm.internal.tvm_internal_project.model.Timesheet;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ public interface TimesheetService {
     ResponseEntity<ResponseStructure<Timesheet>> updateTimesheet(Long id, Timesheet timesheetDetails);
 
     ResponseEntity<ResponseStructure<String>> deleteTimesheet(Long id);
+
+    ResponseEntity<ChartData> getWorkHours(Long id);
 
 }
 

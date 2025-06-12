@@ -1,9 +1,9 @@
 package com.tvm.internal.tvm_internal_project.controller;
 
+import com.tvm.internal.tvm_internal_project.model.ChartData;
 import com.tvm.internal.tvm_internal_project.model.Timesheet;
 import com.tvm.internal.tvm_internal_project.response.ResponseStructure;
 import com.tvm.internal.tvm_internal_project.service.TimesheetService;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,11 @@ public class TimesheetController {
     @GetMapping("/timesheets/{id}")
     public ResponseEntity<ResponseStructure<Timesheet>> getTimesheetById(@PathVariable Long id) {
         return timesheetService.getTimesheetById(id);
+    }
+
+    @GetMapping("/Workhours/{id}")
+    public ResponseEntity<ChartData> getWorkHouse(@PathVariable Long id) {
+        return timesheetService.getWorkHours(id);
     }
 
     @GetMapping("/timesheets")
