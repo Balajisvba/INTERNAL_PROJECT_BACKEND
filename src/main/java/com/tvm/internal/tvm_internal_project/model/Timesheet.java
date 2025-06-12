@@ -1,15 +1,13 @@
 package com.tvm.internal.tvm_internal_project.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Embedded;
 import lombok.Data;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -19,31 +17,13 @@ public class Timesheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long empId;
-    private Long projectId;
-    private String Location;
-    private String Task;
-    private LocalDate date;
-    @Schema(type = "string", format = "time", example = "08:30:00")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
-    private LocalTime hoursworked;
+    private String project;
+    private boolean wfol;
+    @Embedded
+    private Hours hours;
+    private double totalhours;
     private String description;
-
-    public String getLocation() {
-        return Location;
-    }
-
-    public void setLocation(String location) {
-        Location = location;
-    }
-
-    public String getTask() {
-        return Task;
-    }
-
-    public void setTask(String task) {
-        Task = task;
-    }
+    private LocalDateTime weekendDate;
 
     public Long getId() {
         return id;
@@ -53,36 +33,44 @@ public class Timesheet {
         this.id = id;
     }
 
-    public Long getEmpId() {
-        return empId;
+    public String getProject() {
+        return project;
     }
 
-    public void setEmpId(Long empId) {
-        this.empId = empId;
+    public void setProject(String project) {
+        this.project = project;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public boolean isWfol() {
+        return wfol;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setWfol(boolean wfol) {
+        this.wfol = wfol;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getWeekendDate() {
+        return weekendDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setWeekendDate(LocalDateTime weekendDate) {
+        this.weekendDate = weekendDate;
     }
 
-    public LocalTime getHoursworked() {
-        return hoursworked;
+    public double getTotalhours() {
+        return totalhours;
     }
 
-    public void setHoursworked(LocalTime hoursworked) {
-        this.hoursworked = hoursworked;
+    public void setTotalhours(double totalhours) {
+        this.totalhours = totalhours;
+    }
+
+    public Hours getHours() {
+        return hours;
+    }
+
+    public void setHours(Hours hours) {
+        this.hours = hours;
     }
 
     public String getDescription() {
