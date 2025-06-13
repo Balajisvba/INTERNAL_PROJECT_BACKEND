@@ -37,7 +37,7 @@ public class DocumentServiceImpl implements DocumentsService {
         kycDocument.setAadharCardName(aadhar.getOriginalFilename());
         kycDocument.setPassportCard(passport.getBytes());
         kycDocument.setPassportCardType(passport.getContentType());
-        kycDocument.setPassposrtCardName(passport.getOriginalFilename());
+        kycDocument.setPassportCardName(passport.getOriginalFilename());
         kycDocument.setPanCard(pan.getBytes());
         kycDocument.setPanCardName(pan.getOriginalFilename());
         kycDocument.setPanCardType(pan.getContentType());
@@ -103,7 +103,7 @@ public class DocumentServiceImpl implements DocumentsService {
 
         if (optionalDocument.isPresent()) {
             KYCDocument kycDocument = optionalDocument.get();
-            return ResponseEntity.ok().contentType(MediaType.parseMediaType(kycDocument.getPassportCardType())).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + kycDocument.getPassposrtCardName() + "\"").body(kycDocument.getPassportCard());
+            return ResponseEntity.ok().contentType(MediaType.parseMediaType(kycDocument.getPassportCardType())).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + kycDocument.getPassportCardName() + "\"").body(kycDocument.getPassportCard());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("PassPort Card  Not Found");
         }

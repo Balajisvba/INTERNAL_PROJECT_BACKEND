@@ -14,8 +14,9 @@ public class LeaveReport
     @Column(name = "employee_name")
     private String employeeName; // Required, name of the employee
 
-    @Column(name = "profile_picture")
+
     @Lob
+    @Column(columnDefinition = "LONGBLOB",name = "profile_picture")
     private byte[] profilePicture; // Optional, path to the employee's profile picture
 
     @Column(name = "leave_booked")

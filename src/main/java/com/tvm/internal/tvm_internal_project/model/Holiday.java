@@ -12,7 +12,7 @@ public class Holiday {
     private Long id;
     private String name;
     private String date;
-    private String day_Name;
+    private String day;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class Holiday {
         this.date = date;
     }
 
-    public String getDay_Name() {
-        return day_Name;
+    public String getDay() {
+        return day;
     }
 
-    public void setDay_Name(String day_Name) {
-        this.day_Name = day_Name;
+    public void setDay(String day) {
+        this.day = day;
     }
 }

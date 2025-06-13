@@ -22,7 +22,7 @@ public class KYCDocument {
 
     @Lob
     private byte[] passportCard;
-    private String passposrtCardName;
+    private String passportCardName;
     private String passportCardType;
 
     public String getPanCardName() {
@@ -57,12 +57,12 @@ public class KYCDocument {
         this.aadharCardName = aadharCardName;
     }
 
-    public String getPassposrtCardName() {
-        return passposrtCardName;
+    public String getPassportCardName() {
+        return passportCardName;
     }
 
-    public void setPassposrtCardName(String passposrtCardName) {
-        this.passposrtCardName = passposrtCardName;
+    public void setPassportCardName(String passportCardName) {
+        this.passportCardName = passportCardName;
     }
 
     public String getPassportCardType() {

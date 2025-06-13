@@ -31,7 +31,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<ResponseStructure<String>> deleteById(@PathVariable Integer id) {
+    public ResponseEntity<ResponseStructure<String>> deleteById(@PathVariable Long id) {
         return employeeService.deleteById(id);
     }
 

@@ -1,8 +1,10 @@
 package com.tvm.internal.tvm_internal_project.model;
 
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
+@CrossOrigin(origins = "http://localhost:4200")
 public class AddTimeLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

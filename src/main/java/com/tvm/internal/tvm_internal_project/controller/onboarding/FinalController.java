@@ -37,7 +37,7 @@ public class FinalController {
         return finalService.getFinalAll();
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<ResponseStructure<String>> deleteFinal(@PathVariable Integer id) {
         return finalService.deleteFinal(id);
     }

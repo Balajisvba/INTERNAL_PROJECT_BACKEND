@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +23,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public ResponseEntity<ResponseStructure<Attendance>> saveAttendance(Attendance attendance) {
+        process(attendance);
         Attendance created = attendanceRepo.save(attendance);
         ResponseStructure<Attendance> response = new ResponseStructure<>();
         response.setBody(created);
@@ -95,6 +98,14 @@ public class AttendanceServiceImpl implements AttendanceService {
         response.setStatusCode(HttpStatus.OK.value());
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    public void process(Attendance attendance) {
+        LocalTime totalHours = LocalTime.parse(attendance.getOfficeHours(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime systemHours = LocalTime.parse(attendance.getSystemHours(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime total = LocalTime.parse(attendance.getTotal(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime breakTime = LocalTime.parse(attendance.getBreakTime(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime workingTime = LocalTime.parse(attendance.getWorkingTime(), DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
 }

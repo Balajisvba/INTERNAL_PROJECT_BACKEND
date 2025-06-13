@@ -130,8 +130,8 @@ public class PersonalServiceImpl implements PersonalService {
             resPersonal.setEmergency_contact_name(personal.getEmergency_contact_name());
             resPersonal.setEmergency_contact_number(personal.getEmergency_contact_number());
             resPersonal.setEmergency_relationship(personal.getEmergency_relationship());
-            resPersonal.setExp_year(personal.getExp_year());
-            resPersonal.setExp_month(personal.getExp_month());
+            resPersonal.setYear(personal.getYear());
+            resPersonal.setMonth(personal.getMonth());
             resPersonal.setRelevantYear(personal.getRelevantYear());
 
             Personal savedPersonal = personalRepository.save(resPersonal);
