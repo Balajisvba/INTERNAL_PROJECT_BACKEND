@@ -11,6 +11,6 @@ public interface EmployeeService {
 
     ResponseEntity<ResponseStructure<Employee>> loginByPhone(Long mobile, String password);
 
-    ResponseEntity<ResponseStructure<String>> deleteById(Integer id);
+    ResponseEntity<ResponseStructure<String>> deleteById(Long id);
 
 }

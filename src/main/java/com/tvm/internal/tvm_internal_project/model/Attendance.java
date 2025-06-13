@@ -3,7 +3,6 @@ package com.tvm.internal.tvm_internal_project.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -17,19 +16,19 @@ public class Attendance {
     private Date date;
     @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "OfficeHours")
-    private LocalTime officeHours;
+    private String officeHours;
     @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "SystemHours")
-    private LocalTime systemHours;
+    private String systemHours;
     @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "Total")
-    private LocalTime total;
+    private String total;
     @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "Break")
-    private LocalTime breakTime;
+    private String breakTime;
     @JsonFormat(pattern = "HH:mm:ss")
     @Column(name = "Working")
-    private LocalTime workingTime;
+    private String workingTime;
     @Column(name = "status")
     private String status;
 
@@ -49,43 +48,43 @@ public class Attendance {
         this.date = date;
     }
 
-    public LocalTime getOfficeHours() {
+    public String getOfficeHours() {
         return officeHours;
     }
 
-    public void setOfficeHours(LocalTime officeHours) {
+    public void setOfficeHours(String officeHours) {
         this.officeHours = officeHours;
     }
 
-    public LocalTime getSystemHours() {
+    public String getSystemHours() {
         return systemHours;
     }
 
-    public void setSystemHours(LocalTime systemHours) {
+    public void setSystemHours(String systemHours) {
         this.systemHours = systemHours;
     }
 
-    public LocalTime getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(LocalTime total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 
-    public LocalTime getBreakTime() {
+    public String getBreakTime() {
         return breakTime;
     }
 
-    public void setBreakTime(LocalTime breakTime) {
+    public void setBreakTime(String breakTime) {
         this.breakTime = breakTime;
     }
 
-    public LocalTime getWorkingTime() {
+    public String getWorkingTime() {
         return workingTime;
     }
 
-    public void setWorkingTime(LocalTime workingTime) {
+    public void setWorkingTime(String workingTime) {
         this.workingTime = workingTime;
     }
 

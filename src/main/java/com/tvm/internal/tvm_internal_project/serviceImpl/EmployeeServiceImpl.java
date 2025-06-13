@@ -54,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new ResponseEntity<ResponseStructure<Employee>>(structure, HttpStatus.OK);
     }
 
-    public ResponseEntity<ResponseStructure<String>> deleteById(Integer id) {
+    public ResponseEntity<ResponseStructure<String>> deleteById(Long id) {
         ResponseStructure<String> structure = new ResponseStructure<>();
 
         Optional<Employee> dbUser = employeeRepo.findById(id);

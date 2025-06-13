@@ -32,7 +32,7 @@ public class HolidayServiceImpl implements HolidayService {
             Holiday holidays = update.get();
             holidays.setName(holiday.getName());
             holidays.setDate(holiday.getDate());
-            holidays.setDay_Name(holiday.getDay_Name());
+            holidays.setDay(holiday.getDay());
             return holidayRepo.save(holidays);
         } else {
             throw new RuntimeException("Holiday Not found" + id);

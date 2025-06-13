@@ -10,7 +10,7 @@ import java.util.List;
 public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(unique = true)
     private String fname;
     private String mname;
@@ -48,8 +48,8 @@ public class Personal {
     private String emergency_contact_name;
     private Long emergency_contact_number;
     private String emergency_relationship;
-    private String exp_year;
-    private String exp_month;
+    private String year;
+    private String month;
     private String relevantYear;
 
     @OneToOne(mappedBy = "personal", cascade = CascadeType.ALL)
@@ -95,11 +95,11 @@ public class Personal {
     @OneToOne(mappedBy = "personal", cascade = CascadeType.ALL)
     private Employee employee;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -336,20 +336,20 @@ public class Personal {
         this.emergency_relationship = emergency_relationship;
     }
 
-    public String getExp_year() {
-        return exp_year;
+    public String getYear() {
+        return year;
     }
 
-    public void setExp_year(String exp_year) {
-        this.exp_year = exp_year;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public String getExp_month() {
-        return exp_month;
+    public String getMonth() {
+        return month;
     }
 
-    public void setExp_month(String exp_month) {
-        this.exp_month = exp_month;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public String getRelevantYear() {

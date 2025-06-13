@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-@Data
+
 public class OffboardingRequestDTO {
     private String name;
     private Long employeeId;
@@ -21,4 +21,124 @@ public class OffboardingRequestDTO {
     private String exitInterviewFeedback;
     private String exitInterviewer;
     private Boolean offboardingDocumentsSubmitted;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDate getNoticePeriodStartDate() {
+        return noticePeriodStartDate;
+    }
+
+    public void setNoticePeriodStartDate(LocalDate noticePeriodStartDate) {
+        this.noticePeriodStartDate = noticePeriodStartDate;
+    }
+
+    public LocalDate getNoticePeriodEndDate() {
+        return noticePeriodEndDate;
+    }
+
+    public void setNoticePeriodEndDate(LocalDate noticePeriodEndDate) {
+        this.noticePeriodEndDate = noticePeriodEndDate;
+    }
+
+    public LocalDate getRelievingDate() {
+        return relievingDate;
+    }
+
+    public void setRelievingDate(LocalDate relievingDate) {
+        this.relievingDate = relievingDate;
+    }
+
+    public String getExitReason() {
+        return exitReason;
+    }
+
+    public void setExitReason(String exitReason) {
+        this.exitReason = exitReason;
+    }
+
+    public String getExitType() {
+        return exitType;
+    }
+
+    public void setExitType(String exitType) {
+        this.exitType = exitType;
+    }
+
+    public String getExitStatus() {
+        return exitStatus;
+    }
+
+    public void setExitStatus(String exitStatus) {
+        this.exitStatus = exitStatus;
+    }
+
+    public String getExitInterviewFeedback() {
+        return exitInterviewFeedback;
+    }
+
+    public void setExitInterviewFeedback(String exitInterviewFeedback) {
+        this.exitInterviewFeedback = exitInterviewFeedback;
+    }
+
+    public String getExitInterviewer() {
+        return exitInterviewer;
+    }
+
+    public void setExitInterviewer(String exitInterviewer) {
+        this.exitInterviewer = exitInterviewer;
+    }
+
+    public Boolean getOffboardingDocumentsSubmitted() {
+        return offboardingDocumentsSubmitted;
+    }
+
+    public void setOffboardingDocumentsSubmitted(Boolean offboardingDocumentsSubmitted) {
+        this.offboardingDocumentsSubmitted = offboardingDocumentsSubmitted;
+    }
 }

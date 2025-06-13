@@ -13,9 +13,9 @@ import jakarta.persistence.JoinColumn;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer employeeId; // Required
-    private String employeeName; // Required
-    private String role; // Optional
+    private Long id; // Required
+    private String name; // Required
+    private String designation; // Optional
     private String status; // Optional
     private Long mobile;
     private String email;
@@ -28,28 +28,28 @@ public class Employee {
     @JoinColumn(name = "personal_id")
     private Personal personal;
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Long Id) {
+        this.id = id;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public String getName() {
+        return name;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public String getDesignation() {
+        return designation;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 
     public String getStatus() {
